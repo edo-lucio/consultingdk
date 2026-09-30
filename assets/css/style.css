@@ -157,6 +157,10 @@ section[id]{ scroll-margin-top:90px; }
 
 .nav-cta{ display:flex; align-items:center; gap:20px; }
 
+.nav-langs{ display:flex; align-items:center; gap:10px; padding-left:20px; margin-left:2px; border-left:1px solid var(--border); }
+.nav-langs a{ font-size:.7rem; font-weight:600; letter-spacing:.5px; text-transform:uppercase; color:var(--text-faint); }
+.nav-langs a.is-active, .nav-langs a:hover{ color:#fff; }
+
 .nav-toggle{
   display:none; flex-direction:column; gap:5px; background:none; border:0; padding:8px; z-index:1100;
 }
@@ -174,6 +178,8 @@ section[id]{ scroll-margin-top:90px; }
   }
   .nav.is-open{ transform:translateX(0); }
   .nav a{ font-size:1.1rem; }
+  .nav-langs{ border-left:0; padding-left:0; margin-left:0; margin-top:6px; padding-top:26px; border-top:1px solid var(--border); }
+  .nav-langs a{ font-size:.85rem; }
   .nav-cta{ display:none; }
   .nav-toggle{ display:flex; }
 }
@@ -427,9 +433,6 @@ section[id]{ scroll-margin-top:90px; }
 .footer-social svg{ width:16px; height:16px; }
 .footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top:30px; border-top:1px solid var(--border); flex-wrap:wrap; gap:14px; }
 .footer-bottom p{ margin:0; color:var(--text-faint); font-size:.82rem; }
-.footer-langs{ display:flex; gap:16px; }
-.footer-langs a{ color:var(--text-faint); font-size:.82rem; }
-.footer-langs a.is-active, .footer-langs a:hover{ color:var(--text-muted); }
 
 /* =========================================================
    REVEAL ANIMATION
