@@ -70,6 +70,27 @@ document.addEventListener('DOMContentLoaded', function () {
     counters.forEach(function (el) { counterIO.observe(el); });
   }
 
+  /* ---------- contact form -> mail client ----------
+     Posting a form straight to a mailto: action makes browsers show an
+     "information you're about to submit is not secure" warning. Building
+     the mailto: link here instead opens the mail client with no warning. */
+  var mailForms = document.querySelectorAll('form[data-mailto]');
+  mailForms.forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var lines = [];
+      form.querySelectorAll('input[name], select[name], textarea[name]').forEach(function (field) {
+        var label = field.id ? form.querySelector('label[for="' + field.id + '"]') : null;
+        var title = label ? label.textContent.trim() : field.name;
+        lines.push(title + ': ' + field.value.trim());
+      });
+      var href = 'mailto:' + form.getAttribute('data-mailto') +
+        '?subject=' + encodeURIComponent(form.getAttribute('data-subject') || '') +
+        '&body=' + encodeURIComponent(lines.join('\n'));
+      window.location.href = href;
+    });
+  });
+
   /* ---------- current year in footer ---------- */
   var yearEls = document.querySelectorAll('[data-year]');
   yearEls.forEach(function (el) { el.textContent = new Date().getFullYear(); });
